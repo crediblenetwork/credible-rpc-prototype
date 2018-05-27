@@ -16,6 +16,7 @@ let childProcess = require('child_process');
 // const COMMIT_DATE = childProcess.execSync('git log -1 --format=%cd ').toString();
 const SERVER_START = new Date()
 const driver = require('bigchaindb-driver')
+const memstore = require('memstore').Store
 
 /**
  * Initialize
@@ -23,11 +24,12 @@ const driver = require('bigchaindb-driver')
 const app = express()
 const env = app.get('env') || 'development'
 
-
 global.bigchaindb_connection = new driver.Connection(config.API_PATH, {
     app_id: config.APP_ID,
     app_key: config.APP_KEY
 })
+
+global.memstore = new memstore()
 
 /**
  * Config middleware
