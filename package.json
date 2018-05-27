@@ -1,0 +1,33 @@
+{
+  "name": "credible-rpc-prototype",
+  "version": "1.0.0",
+  "description": "Credible rpc prototype",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "node bin/preinstall.js",
+    "lint": "eslint **/*.js",
+    "lint-fix": "eslint **/*.js --fix",
+    "dev": "NODE_ENV=development nodemon server.js",
+    "prod": "NODE_ENV=production node server.js"
+  },
+  "author": "SmartPesa",
+  "license": "ISC",
+  "dependencies": {
+    "aes-js": "^3.1.1",
+    "bigchaindb-driver": "^4.0.1",
+    "body-parser": "^1.18.3",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-request-id": "^1.4.0",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "helmet": "^3.12.1",
+    "joi": "^13.3.0",
+    "nodemon": "^1.17.5",
+    "path": "^0.12.7",
+    "pm2": "^2.10.4",
+    "response-time": "^2.3.2"
+  }
+}
