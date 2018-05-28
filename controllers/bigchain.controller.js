@@ -65,5 +65,45 @@ bigchainController.transfer = async function (req, res) {
     res.json(data)
 }
 
+bigchainController.search = async function (req, res) {
+    logger.trace('bigchain.controller::search:CALL');
+
+    let schema = Joi.object().keys({
+        public_key: Joi.string().required(),
+    });
+    logger.info('req.query: ' + JSON.stringify(req.query));
+
+    const validater = Joi.validate(req.query, schema);
+    if (validater.error) {
+        logger.trace('bigchain.controller::search:' + validater.error);
+        return res.status(400).send({ message: validater.error.details[0].message });
+    }
+
+    let public_key = req.query.public_key
+
+    let data = await bigchaindb.search(public_key)
+    res.json(data)
+}
+
+bigchainController.getTransaction = async function (req, res) {
+    logger.trace('bigchain.controller::getTransaction:CALL');
+
+    let schema = Joi.object().keys({
+        transaction_id: Joi.string().required(),
+    });
+    logger.info('req.query: ' + JSON.stringify(req.query));
+
+    const validater = Joi.validate(req.query, schema);
+    if (validater.error) {
+        logger.trace('bigchain.controller::getTransaction:' + validater.error);
+        return res.status(400).send({ message: validater.error.details[0].message });
+    }
+
+    let transaction_id = req.query.transaction_id
+
+    let data = await bigchaindb.getTransaction(transaction_id)
+    res.json(data)
+}
+
 module.exports = bigchainController
 
