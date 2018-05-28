@@ -6,9 +6,9 @@ let authController = {}
 authController.basicAuthen = function (req, res, next) {
     let auth = req.headers['authorization'];  // auth is in base64(username:password)  so we need to decode the base64
     logger.info("Authorization Header is: ", auth);
-
+    
     if (!auth) {
-        res.status(400).send({ message: "Missing authentication info" })
+        return res.status(400).send({ message: "Missing authentication info" })
     }
 
     let data = auth.split(' ');
@@ -22,7 +22,7 @@ authController.basicAuthen = function (req, res, next) {
     var password = creds[1];
 
     if (username !== config.USERNAME || password !== config.PASSWORD) {
-        res.status(401).send({ message: "Unauthorized" })
+        return res.status(401).send({ message: "Unauthorized" })
     }
 
     return next()
