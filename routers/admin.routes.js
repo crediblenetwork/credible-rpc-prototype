@@ -10,5 +10,6 @@ router.get('/generatekeypair', auth.basicAuthen, bigchain.generateKeyPair)
 router.post('/transfer', auth.basicAuthen, bigchain.transfer)
 router.get('/search', auth.basicAuthen, bigchain.search)
 router.get('/gettransaction', auth.basicAuthen, bigchain.getTransaction)
+router.get('/gettokenbalance', auth.basicAuthen, bigchain.getTokenBalance)
 
 module.exports = router

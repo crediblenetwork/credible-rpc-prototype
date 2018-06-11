@@ -105,5 +105,25 @@ bigchainController.getTransaction = async function (req, res) {
     res.json(data)
 }
 
+bigchainController.getTokenBalance = async function (req, res) {
+    logger.trace('bigchain.controller::getTokenBalance:CALL');
+
+    let schema = Joi.object().keys({
+        public_key: Joi.string().required(),
+    });
+    logger.info('req.query: ' + JSON.stringify(req.query));
+
+    const validater = Joi.validate(req.query, schema);
+    if (validater.error) {
+        logger.trace('bigchain.controller::getTokenBalance:' + validater.error);
+        return res.status(400).send({ message: validater.error.details[0].message });
+    }
+
+    let public_key = req.query.public_key
+
+    let data = await bigchaindb.getTokenBalance(public_key)
+    res.json(data)
+}
+
 module.exports = bigchainController
 
