@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
     logger.fatal(`Internal server error - request-id: ${req.id} - Error: ${err.message}`)
     res.status(500).json({
         error: 'Internal Server Error',
-        message: err.message
+        message: 'Internal Server Error'
     })
 })
 
