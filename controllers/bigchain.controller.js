@@ -125,5 +125,12 @@ bigchainController.getTokenBalance = async function (req, res) {
     res.json(data)
 }
 
+bigchainController.getValidators = async function (req, res) {
+    logger.trace('bigchain.controller::getValidators:CALL');
+
+    let data = await bigchaindb.getValidators()
+    res.json(data)
+}
+
 module.exports = bigchainController
 

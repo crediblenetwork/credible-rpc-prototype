@@ -11,5 +11,6 @@ router.post('/transfer', auth.basicAuthen, bigchain.transfer)
 router.get('/search', auth.basicAuthen, bigchain.search)
 router.get('/gettransaction', auth.basicAuthen, bigchain.getTransaction)
 router.get('/gettokenbalance', auth.basicAuthen, bigchain.getTokenBalance)
+router.get('/getvalidators', auth.basicAuthen, bigchain.getValidators)
 
 module.exports = router
