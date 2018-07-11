@@ -19,7 +19,7 @@ const memstore = require('memstore').Store
 const app = express()
 const env = app.get('env') || 'development'
 
-global.bigchaindb_connection = new driver.Connection(config.API_PATH, {
+global.bigchaindb_connection = new driver.Connection(`${config.API_URL}${config.API_PATH}/`, {
     app_id: config.APP_ID,
     app_key: config.APP_KEY
 })
