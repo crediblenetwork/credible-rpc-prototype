@@ -136,7 +136,6 @@ bigchainController.getVersion = async function (req, res) {
     logger.trace('bigchain.controller::getVersion:CALL');
 
     let version = await bigchaindb.getVersion();
-    console.log(version)
     res.json({
         version: version,
         timestamp: new Date().getTime()
